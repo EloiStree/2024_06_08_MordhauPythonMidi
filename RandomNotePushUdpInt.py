@@ -16,7 +16,7 @@ while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     # Set the destination address and port
-    server_address = ('localhost', 7042)
+    server_address = ('localhost', 5648)
 
     # Send the random value to the server
     sock.sendto(struct.pack("<i", random_value), server_address)
