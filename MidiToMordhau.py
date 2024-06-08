@@ -1,15 +1,27 @@
+# pip install keyboard pyperclip pygetwindow mido
+
 import mido
 import socket
 import struct
+import time
+import random 
 
-
+UDP_IP_TARGET=["127.0.0.1"]
 UDP_PORT =[3614, 7000]
+
+keyboard_to_listen="MPK mini pl"
+
+
 
 
 def send_udp_message(int_command):
-                sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-                sock.sendto(struct.pack("<i",int_command), ("127.0.0.1", 3614))
-                sock.close()
+                global UDP_IP_TARGET ,  UDP_PORT
+                for ipv4 in UDP_IP_TARGET:
+                    for port in UDP_PORT:
+                        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                        sock.sendto(struct.pack("<i",int_command), (ipv4, port))
+                        sock.close()
+               
 
 def on_message(message):
     if message.type == 'note_on':
@@ -26,14 +38,42 @@ def on_message(message):
         print(f"Note {message.note} off")
 
 def launch_listener():
-   
+    global keyboard_to_listen
     # List all available MIDI devices
     print("Available MIDI devices:")
     for device in mido.get_input_names():
         print(device)
 
-    # Select the desired MIDI device
-    input_device = mido.open_input('MPK mini play 1')
+    bool_keyboard_found=False
+    try:
+        # Select the desired MIDI device
+        input_device = mido.open_input(keyboard_to_listen)
+        bool_keyboard_found=True
+    except:
+        print(f"Device {keyboard_to_listen} not found")
+        print(" ")
+        print(" ")
+        print(" ")
+    
+    if not bool_keyboard_found:
+        
+        print("Available MIDI devices:")
+        devices = mido.get_input_names()
+        for device in devices:
+            print(device)
+        for i in range(len(devices)-1, 0, -1):
+            try:
+                print(i)
+                # Select the desired MIDI device
+                input_device = mido.open_input(devices[i])
+                bool_keyboard_found=True
+                keyboard_to_listen=devices[i]
+                break
+            except:
+                print(f"Device {devices[i]} not connectable")
+                print(" ")
+
+ 
 
     # Start listening for MIDI messages
     print("Listening to MIDI notes...")

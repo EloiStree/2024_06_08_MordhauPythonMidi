@@ -1,21 +1,15 @@
-
+# pip install keyboard pyperclip pygetwindow mido
 import keyboard
-import time
-import struct
-import socket
-import keyboard
-import time
-import struct
-import socket
-import pyperclip
-import ctypes
-import time
-import socket
 import pyperclip
 import pygetwindow as gw
-
+import mido
+import time
+import struct
+import socket
+import ctypes
 
 UDP_PORT=5648
+UDP_PORT=3614
 
 
 window_title = "MORDHAU  "
