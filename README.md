@@ -7,4 +7,5 @@ Python script to play music with Midi keyboard on Mordhau
 
 
 Use IID for remote control:
-https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA
+- Gate: https://github.com/EloiStree/2024_05_11_GateIID_WS_Python
+- Server: https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA
