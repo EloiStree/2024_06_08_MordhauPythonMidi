@@ -2,10 +2,15 @@ import mido
 import socket
 import struct
 
+
+UDP_PORT =[3614, 7000]
+
+
 def send_udp_message(int_command):
                 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
                 sock.sendto(struct.pack("<i",int_command), ("127.0.0.1", 3614))
                 sock.close()
+
 def on_message(message):
     if message.type == 'note_on':
         print(f"Note {message.note} on")
@@ -15,8 +20,6 @@ def on_message(message):
         else:
             cmd_mordhau_as_int=int(midi_to_mordhau[str(message.note)])
             print(f"Mordhay command: {cmd_mordhau_as_int}")
-            
-
             send_udp_message(cmd_mordhau_as_int)
 
     elif message.type == 'note_off':
