@@ -9,7 +9,7 @@ import random
 UDP_IP_TARGET=["127.0.0.1"]
 UDP_PORT =[3614, 7000]
 
-keyboard_to_listen="MPK mini pl"
+keyboard_to_listen="MPK mini play 1"
 
 
 
@@ -132,7 +132,7 @@ midi_to_mordhau["70"]="45"
 midi_to_mordhau[""]="46"
 midi_to_mordhau["71"]="47"
 midi_to_mordhau[""]="48"
-midi_to_mordhau["72"]="49"
+midi_to_mordhau[""]="49"
 midi_to_mordhau[""]="50"
 midi_to_mordhau[""]="51"
 midi_to_mordhau[""]="52"
@@ -143,7 +143,8 @@ midi_to_mordhau[""]="56"
 midi_to_mordhau[""]="57"
 midi_to_mordhau[""]="58"
 midi_to_mordhau[""]="59"
-midi_to_mordhau[""]="60"
+midi_to_mordhau["72"]="60"
+
 midi_to_mordhau[""]="61"
 midi_to_mordhau["21"]="62"
 midi_to_mordhau[""]="63"

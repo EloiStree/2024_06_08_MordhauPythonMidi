@@ -8,11 +8,12 @@ import struct
 import socket
 import ctypes
 
-UDP_PORT=5648
-UDP_PORT=3614
+#UDP_PORT=5648
+UDP_PORT=7000
 
 
 window_title = "MORDHAU  "
+bool_use_keyboard_input=False
 
 # Constants for SendMessage
 WM_KEYDOWN = 0x0100
@@ -218,8 +219,6 @@ def send_key_release(hwnd, key_code):
 
 
 
-bool_use_keyboard_input=True
-bool_use_keyboard_input=False
 
 
 pyperclip.copy("Hello")
