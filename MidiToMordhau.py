@@ -7,7 +7,7 @@ import time
 import random 
 
 UDP_IP_TARGET=["127.0.0.1"]
-UDP_PORT =[3614, 7000]
+UDP_PORT =[3614, 7000, 5648]
 
 keyboard_to_listen="MPK mini play 1"
 

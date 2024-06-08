@@ -8,8 +8,8 @@ import struct
 import socket
 import ctypes
 
-#UDP_PORT=5648
-UDP_PORT=7000
+#UDP_PORT=7000
+UDP_PORT=5648
 
 
 window_title = "MORDHAU  "
