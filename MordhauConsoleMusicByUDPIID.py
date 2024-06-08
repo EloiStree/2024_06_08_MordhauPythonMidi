@@ -15,7 +15,7 @@ import pyperclip
 import pygetwindow as gw
 
 
-
+UDP_PORT=5648
 
 
 window_title = "MORDHAU  "
@@ -256,6 +256,14 @@ def pess_and_release_key_post(key):
         send_key_release(mordhau_hwnd, keyboard_mappings[key])
         #time.sleep(timebetweenaction)
 
+def pess_key_post(key):   
+        global mordhau_hwnd
+        send_key_press(mordhau_hwnd, keyboard_mappings[key])
+
+def release_key_post(key):   
+        global mordhau_hwnd
+        send_key_release(mordhau_hwnd, keyboard_mappings[key])
+
 
 def change_to_flute():
     if(bool_use_keyboard_input):
@@ -269,9 +277,40 @@ def change_to_lute():
     else :
         pess_and_release_key_post(key_for_lute)
 
+def fake_type_past():
+    WM_PASTE = 0x0302
+    ctypes.windll.user32.SendMessageW(mordhau_hwnd, WM_PASTE, 0, 0)
+    
+
+def try_to_write(str_to_write):
+    for char in str_to_write:
+        char=char.upper()
+        if(char=="0"):
+            char="NP0"
+        elif(char=="1"):
+            char="NP1"
+        elif(char=="2"):
+            char="NP2"
+        elif(char=="3"):
+            char="NP3"
+        elif(char=="4"):
+            char="NP4"
+        elif(char=="5"):
+            char="NP5"
+        elif(char=="6"):
+            char="NP6"
+        elif(char=="7"):
+            char="NP7"
+        elif(char=="8"):
+            char="NP8"
+        elif(char=="9"):
+            char="NP9"
+        pess_key_post(char)
+        #time.sleep(0.01)
 
 def play_on_notes(int_note_0_60:int):
-    pyperclip.copy(f"equipmentcommand {int_note_0_60}")  
+    str_to_write=f"equipmentcommand {int_note_0_60}"
+    pyperclip.copy(str_to_write)  
     
     if(bool_use_keyboard_input):  
         keyboard.press_and_release('enter')
@@ -285,12 +324,17 @@ def play_on_notes(int_note_0_60:int):
         pess_and_release_key_post('Enter')
         pess_and_release_key_post('Enter')
         pess_and_release_key_post('U')
-        time.sleep(0.1)
-        past_key_post()
-        time.sleep(0.1)
-        pess_and_release_key_post("Backspace")
-        pess_and_release_key_post("Backspace")
-        time.sleep(0.5)
+        time.sleep(0.02)
+        try_to_write(str_to_write)
+        
+        # ##past_key_post()
+        # time.sleep(0.01)
+        # pess_and_release_key_post("Backspace")
+        # time.sleep(0.01)
+        # # pess_and_release_key_post("Backspace")
+        # time.sleep(0.01)
+        time.sleep(0.02)
+        pess_and_release_key_post('Enter')
         pess_and_release_key_post('Enter')
 
 def play_all_notes():
@@ -337,10 +381,10 @@ keyboard.hook(event_hook_keyboard)
 
 
 def listen_udp():
+    global UDP_PORT
     global bool_mute_mode
     UDP_IP = "0.0.0.0"
-    UDP_PORT = 7042
-    print("Start listening on UDP port", UDP_PORT)
+    print("Start listening on UDP port", listen_udp)
     print("-1 for flute")
     print("-2 for lute")
     print("0 to 60 for notes on lute")
@@ -351,6 +395,8 @@ def listen_udp():
     sock.bind((UDP_IP, UDP_PORT))
     last_int_command=0
     note_int_to_play=0
+    iid_anti_double_previous=""
+    iid_anti_double_current=""
     while True:
         
         data, addr = sock.recvfrom(1024)
@@ -361,16 +407,22 @@ def listen_udp():
 
         bool_is_int_command=False
         int_cmd_value=0
-
+        
 
         if(len(data)==4):
             int_cmd_value = struct.unpack('<i', data)[0]
             bool_is_int_command=True
-        if(len(data)==12 or len(data)==16):
-            int_cmd_value = struct.unpack('<i', data)[1]
+        if(len(data)==16):
+
+            index, int_cmd_value, date = struct.unpack('<iiQ', data)[:3]
+            iid_anti_double_previous=iid_anti_double_current
+            iid_anti_double_current=f"{index}{int_cmd_value}{date}"
+            if(iid_anti_double_current==iid_anti_double_previous):
+                continue
+
             bool_is_int_command=True
 
-        if(bool_is_int_command):
+        if(bool_is_int_command and int_cmd_value>-3 and int_cmd_value<121):
             if int_cmd_value<61 and last_int_command>60:
                 
                 change_to_lute()
@@ -575,6 +627,7 @@ keyboard_mappings = {
     "Play": 0xFA,
     "Zoom": 0xFB,
     "PA1": 0xFD,
+    " ":  0x20,
     "0x08":"0x08",
     "0x09":"0x09",
     "0x0C":"0x0C",
