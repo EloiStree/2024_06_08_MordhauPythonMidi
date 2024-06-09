@@ -41,3 +41,15 @@ Client code in Python : https://github.com/EloiStree/2024_05_11_GateIID_WS_Pytho
 Fetch IP of home shared server: https://github.com/EloiStree/IP/blob/main/IIDWS/SERVER.txt
 Have your own Server IID: https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA/releases/tag/V0
 Code of the server IID: https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA/tree/main/CloudTunnelingRSA
+
+
+
+# In hope it helps :)
+
+May the music be with you all.
+Don't forget if you need helps to check the Bards Discord. They are amazing. 
+Discord: https://discord.com/invite/4xnJVuz
+
+![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/9b5a3704-b999-4af0-b07f-b6435a652828)
+
+
