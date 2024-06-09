@@ -27,17 +27,20 @@ https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/blob/main/MordhauConso
 
 
 
-## Sync Online
+## Sync Online (Hard mode)
 
 > MIDI > UDP > IID Client > IID RSA SERVER > IID Client > UDP > Injector > USER32 >Mordhau
-> 
+ 
 [![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/e7e7f3b4-8735-43ca-83d1-1d25c5c8b0a6)](https://youtu.be/GuHUTRreQYU)
 Demo video: https://youtu.be/GuHUTRreQYU
 
-## Client Code
+> A bit more hardcore tool but it allows to play music on several accounts if you want to be a groupe of bards.
+
+
+## Client Code 
 Client code in Python : https://github.com/EloiStree/2024_05_11_GateIID_WS_Python
 
-### Server Code
+### Server Code 
 Fetch IP of home shared server: https://github.com/EloiStree/IP/blob/main/IIDWS/SERVER.txt
 Have your own Server IID: https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA/releases/tag/V0
 Code of the server IID: https://github.com/EloiStree/2024_04_04_IndexIntegerDateTunnelingRSA/tree/main/CloudTunnelingRSA
