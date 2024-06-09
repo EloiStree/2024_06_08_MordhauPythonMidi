@@ -6,15 +6,18 @@ Python script to play music with Midi keyboard on Mordhau
 Short demo of me playing with the project: https://youtu.be/AAEVBUUTPXM
 
 
+
+
 ## Local
 
 > MIDI > UDP > Injector > USER32 > Mordhau
 
-[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/6f2ad478-c0e8-402d-9791-ab43795a9cf6)](https://youtu.be/Q0Nym_dJZQE)
-Vidéo Français: https://youtu.be/Q0Nym_dJZQE
+[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/6f2ad478-c0e8-402d-9791-ab43795a9cf6)](https://youtu.be/Q0Nym_dJZQE)  
+Vidéo Français: https://youtu.be/Q0Nym_dJZQE  
+_(Apprendre le python si vous avez besoin d'editer un script : https://youtu.be/LamjAFnybo0)_  
 
-[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/4e67a8d8-1dbd-4582-a96f-a0ac8c443091)](https://youtu.be/_1cG4yv8woQ)
-English video: https://youtu.be/_1cG4yv8woQ
+[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/4e67a8d8-1dbd-4582-a96f-a0ac8c443091)](https://youtu.be/_1cG4yv8woQ)  
+English video: https://youtu.be/_1cG4yv8woQ  
 
 Code to parse your Midi keyboard to the keyboard injector: 
 https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/blob/main/MidiToMordhau.py
