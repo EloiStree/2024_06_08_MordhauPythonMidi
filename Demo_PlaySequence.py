@@ -1,5 +1,5 @@
 
-# This script send random note to check that the Mordhau injector work as planned.
+# Want to play in loop the sequence of notes 1 to 60
 
 import random
 import socket
@@ -7,7 +7,13 @@ import socket
 import time
 import struct
 
+# Frequence to test the notes 0-60
+bool_use_0to60_at_start=True
+# Time between note on the test
 int_frequence=0.1
+
+time_between_loop_end=5
+
 
 ipv4_target= "127.0.0.1"
 port_target= 5648
@@ -20,14 +26,20 @@ def send_note(value_int_0_60):
 
     # Close the socket
 exit_condition=False
-while not exit_condition:
-        
-    
+
+# Wait you to be in the game
+time.sleep(3)
+
+# Quick test that all notes are working
+if bool_use_0to60_at_start:
     for i in range(1,60):
         send_note(i)
         time.sleep(int_frequence)
+
+
+while not exit_condition:
     
-    
+    # Adn your sequence here
     send_note(1)
     time.sleep(0.1)
     send_note(10)
@@ -44,7 +56,7 @@ while not exit_condition:
     time.sleep(0.1)
     send_note(10)
     time.sleep(0.05)
-
+    time.sleep(time_between_loop_end)
 
 
 sock.close()
