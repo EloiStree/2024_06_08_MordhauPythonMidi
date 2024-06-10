@@ -7,6 +7,18 @@ Short demo of me playing with the project: https://youtu.be/AAEVBUUTPXM
 
 
 
+## Step by step (in french)
+
+I teached how to use the tool to someone that agree that I record it.    
+Find here a step by step guide :)    
+
+_J'ai enseigner comment utiliser l'outil à une personne qui a accepté d'être enregistrée.  
+Trouvez ici un vidéo étape par étape._   
+
+
+[![Screenshot 2024-06-10 154559](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/f5d13c20-c0ba-44dc-adf4-a3006254634a)](https://youtu.be/_EmfD7AQ5bY)  
+[https://youtu.be/_EmfD7AQ5bY](https://youtu.be/_EmfD7AQ5bY)  
+
 
 ## Local
 
