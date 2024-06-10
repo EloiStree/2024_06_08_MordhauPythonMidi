@@ -16,13 +16,21 @@ time_between_loop_end=5
 
 
 ipv4_target= "127.0.0.1"
-port_target= 5648
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+port_target= [5648,3614]
+#5648 defaut for Mordhau Midi Github
+#3614 defaut for Python IID Websocket Sync
 
+
+sockets={}
+sockets_address={}
+for i in range(len(port_target)):
+    sockets[i]=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sockets_address[i]=(ipv4_target, port_target[i])
+   
 def send_note(value_int_0_60):
-    # Create a UDP socket
-    server_address = (ipv4_target, port_target)
-    sock.sendto(struct.pack("<i", value_int_0_60), server_address)
+    print("Sending note: "+str(value_int_0_60))
+    for i in range(len(port_target)):        
+        sockets[i].sendto(struct.pack("<i", value_int_0_60), sockets_address[i])
 
     # Close the socket
 exit_condition=False
