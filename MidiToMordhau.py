@@ -1,4 +1,4 @@
-# pip install keyboard pyperclip pygetwindow mido
+# pip install keyboard pyperclip pygetwindow mido python-rtmidi
 
 import mido
 import socket
@@ -6,10 +6,17 @@ import struct
 import time
 import random 
 
+
+# Change with your MIDI keyboard name
+# You can find it by running the script once and looking at the available devices
+keyboard_to_listen="MPK mini play 1"
+
+# Some keyboard need some additional configuration to push note on computer
+# (Not the case most of the time, if it happens try an other keyboard or read the doc of the keyboard)
+
+# Change with your IP and port if you know what you do
 UDP_IP_TARGET=["127.0.0.1"]
 UDP_PORT =[3614, 7000, 5648]
-
-keyboard_to_listen="MPK mini play 1"
 
 
 

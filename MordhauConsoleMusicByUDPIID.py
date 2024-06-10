@@ -1,4 +1,4 @@
-# pip install keyboard pyperclip pygetwindow mido
+# pip install keyboard pyperclip pygetwindow mido python-rtmidi
 import keyboard
 import pyperclip
 import pygetwindow as gw
@@ -18,6 +18,12 @@ bool_use_keyboard_input=False
 # Constants for SendMessage
 WM_KEYDOWN = 0x0100
 WM_KEYUP = 0x0101
+
+
+wait_console_open_delay=0.03
+wait_console_open_delay=0.03
+
+
 
 
 
