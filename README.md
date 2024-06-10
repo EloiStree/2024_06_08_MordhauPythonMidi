@@ -78,3 +78,17 @@ Discord: https://discord.com/invite/4xnJVuz
 [![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/9b958005-f5df-4e38-a6a2-251b2dcd91bc)](https://youtu.be/v6CvOIbG55E)  
 [https://youtu.be/v6CvOIbG55E](https://youtu.be/v6CvOIbG55E)  
 
+
+
+-------------
+
+# Rust ^^
+
+![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/450af4c5-af55-4e78-900b-054a4875d514)
+
+## UDP push from Rust
+
+[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/fa8ca026-c246-4c3f-b4bc-013e1c177627)](https://youtu.be/NY7swe9cDrg)  
+Use the Python script to play Mordhau music from Rust:  
+- https://youtu.be/NY7swe9cDrg
+- https://github.com/EloiStree/HelloRustBending/blob/main/RustEveryDay/2024_06_10_D1_Basic/ReadMe.md
