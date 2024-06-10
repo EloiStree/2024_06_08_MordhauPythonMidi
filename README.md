@@ -69,3 +69,12 @@ Discord: https://discord.com/invite/4xnJVuz
 ![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/9b5a3704-b999-4af0-b07f-b6435a652828)
 
 
+
+--------------
+
+
+# By the community
+
+[![image](https://github.com/EloiStree/2024_06_08_MordhauPythonMidi/assets/20149493/9b958005-f5df-4e38-a6a2-251b2dcd91bc)](https://youtu.be/v6CvOIbG55E)  
+[https://youtu.be/v6CvOIbG55E](https://youtu.be/v6CvOIbG55E)  
+
