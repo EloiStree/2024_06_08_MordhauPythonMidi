@@ -1,11 +1,35 @@
+# pip install keyboard pyperclip pygetwindow mido python-rtmidi
+
 import mido
 import socket
 import struct
+import time
+import random 
+
+
+# Change with your MIDI keyboard name
+# You can find it by running the script once and looking at the available devices
+keyboard_to_listen="MPK mini play 1"
+
+# Some keyboard need some additional configuration to push note on computer
+# (Not the case most of the time, if it happens try an other keyboard or read the doc of the keyboard)
+
+# Change with your IP and port if you know what you do
+UDP_IP_TARGET=["127.0.0.1"]
+UDP_PORT =[3614, 7000, 5648]
+
+
+
 
 def send_udp_message(int_command):
-                sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-                sock.sendto(struct.pack("<i",int_command), ("127.0.0.1", 3614))
-                sock.close()
+                global UDP_IP_TARGET ,  UDP_PORT
+                for ipv4 in UDP_IP_TARGET:
+                    for port in UDP_PORT:
+                        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                        sock.sendto(struct.pack("<i",int_command), (ipv4, port))
+                        sock.close()
+               
+
 def on_message(message):
     if message.type == 'note_on':
         print(f"Note {message.note} on")
@@ -15,22 +39,48 @@ def on_message(message):
         else:
             cmd_mordhau_as_int=int(midi_to_mordhau[str(message.note)])
             print(f"Mordhay command: {cmd_mordhau_as_int}")
-            
-
             send_udp_message(cmd_mordhau_as_int)
 
     elif message.type == 'note_off':
         print(f"Note {message.note} off")
 
 def launch_listener():
-   
+    global keyboard_to_listen
     # List all available MIDI devices
     print("Available MIDI devices:")
     for device in mido.get_input_names():
         print(device)
 
-    # Select the desired MIDI device
-    input_device = mido.open_input('MPK mini play 1')
+    bool_keyboard_found=False
+    try:
+        # Select the desired MIDI device
+        input_device = mido.open_input(keyboard_to_listen)
+        bool_keyboard_found=True
+    except:
+        print(f"Device {keyboard_to_listen} not found")
+        print(" ")
+        print(" ")
+        print(" ")
+    
+    if not bool_keyboard_found:
+        
+        print("Available MIDI devices:")
+        devices = mido.get_input_names()
+        for device in devices:
+            print(device)
+        for i in range(len(devices)-1, 0, -1):
+            try:
+                print(i)
+                # Select the desired MIDI device
+                input_device = mido.open_input(devices[i])
+                bool_keyboard_found=True
+                keyboard_to_listen=devices[i]
+                break
+            except:
+                print(f"Device {devices[i]} not connectable")
+                print(" ")
+
+ 
 
     # Start listening for MIDI messages
     print("Listening to MIDI notes...")
@@ -89,7 +139,7 @@ midi_to_mordhau["70"]="45"
 midi_to_mordhau[""]="46"
 midi_to_mordhau["71"]="47"
 midi_to_mordhau[""]="48"
-midi_to_mordhau["72"]="49"
+midi_to_mordhau[""]="49"
 midi_to_mordhau[""]="50"
 midi_to_mordhau[""]="51"
 midi_to_mordhau[""]="52"
@@ -100,7 +150,8 @@ midi_to_mordhau[""]="56"
 midi_to_mordhau[""]="57"
 midi_to_mordhau[""]="58"
 midi_to_mordhau[""]="59"
-midi_to_mordhau[""]="60"
+midi_to_mordhau["72"]="60"
+
 midi_to_mordhau[""]="61"
 midi_to_mordhau["21"]="62"
 midi_to_mordhau[""]="63"

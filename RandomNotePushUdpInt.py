@@ -1,3 +1,6 @@
+
+# This script send random note to check that the Mordhau injector work as planned.
+
 import random
 import socket
 

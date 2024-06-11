@@ -1,24 +1,19 @@
-
+# pip install keyboard pyperclip pygetwindow mido python-rtmidi
 import keyboard
-import time
-import struct
-import socket
-import keyboard
-import time
-import struct
-import socket
-import pyperclip
-import ctypes
-import time
-import socket
 import pyperclip
 import pygetwindow as gw
+import mido
+import time
+import struct
+import socket
+import ctypes
 
-
+#UDP_PORT=7000
 UDP_PORT=5648
 
 
 window_title = "MORDHAU  "
+bool_use_keyboard_input=False
 
 # Constants for SendMessage
 WM_KEYDOWN = 0x0100
@@ -165,6 +160,12 @@ command_sequence.append(Command(1038,"Thumbs Up",   [emote,emote,emote,alpha4]))
 command_sequence.append(Command(1039,"Thumbs Down", [emote,emote,emote,alpha5]))
 command_sequence.append(Command(1040,"Jester",      [emote,emote,emote,alpha6]))
 
+
+
+
+
+wait_console_open_delay=0.03
+wait_console_open_delay=0.03
 
 
 
@@ -368,8 +369,6 @@ def send_key_release(hwnd, key_code):
 
 
 
-bool_use_keyboard_input=True
-bool_use_keyboard_input=False
 
 
 pyperclip.copy("Hello")
