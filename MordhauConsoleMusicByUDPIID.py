@@ -24,6 +24,150 @@ window_title = "MORDHAU  "
 WM_KEYDOWN = 0x0100
 WM_KEYUP = 0x0101
 
+integer_to_key_press = {}
+integer_to_key_release = {}
+
+
+integer_to_key_press[-108] = "NP8" # Up
+integer_to_key_press[-105] = "NP5" # Down
+integer_to_key_press[-104] = "NP4" # Left
+integer_to_key_press[-106] = "NP6" # Right
+integer_to_key_press[-107] = "NP7" # Turn Left
+integer_to_key_press[-109] = "NP9" # Turn Right
+integer_to_key_press[-103] = "NP1" # Flute equip 2
+integer_to_key_press[-102] = "NP3" # Lute equip 3
+integer_to_key_press[-101] = "NP2" # Emote
+integer_to_key_press[-101] = "NP2" # Voice Command
+integer_to_key_press[-90] = "0" # Alpha1
+integer_to_key_press[-91] = "1" # Alpha1
+integer_to_key_press[-92] = "2" # Alpha2
+integer_to_key_press[-93] = "3" # Alpha3
+integer_to_key_press[-94] = "4" # Alpha4
+integer_to_key_press[-95] = "5" # Alpha5
+integer_to_key_press[-96] = "6" # Alpha6
+integer_to_key_press[-97] = "7" # Alpha7
+integer_to_key_press[-98] = "8" # Alpha8
+integer_to_key_press[-99] = "9" # Alpha9
+
+voice= "NP0"
+emote= "NP2"
+alpha1= "1"
+alpha2= "2"
+alpha3= "3"
+alpha4= "4"
+alpha5= "5"
+alpha6= "6"
+alpha7= "7"
+alpha8= "8"
+alpha9= "9"
+alpha0= "0"
+
+
+command_sequence = []
+
+
+class Command:
+    def __init__(self, command_id, label_id, sequence):
+        self.command_id = command_id
+        self.label_id = label_id
+        self.sequence = sequence
+
+
+
+class PressReleaseCommand:
+    def __init__(self , label_id, key, press, release):
+        self.label_id = label_id
+        self.key = key
+        self.press = press
+        self.release = release
+
+
+
+command_press_release_integer = []
+command_press_release_integer.append(PressReleaseCommand("Up", "NP8", -2000, -3000))
+command_press_release_integer.append(PressReleaseCommand("Down", "NP5", -2001, -3001))
+command_press_release_integer.append(PressReleaseCommand("Left", "NP4", -2002, -3002))
+command_press_release_integer.append(PressReleaseCommand("Right", "NP6", -2003, -3003))
+command_press_release_integer.append(PressReleaseCommand("Turn Left", "NP7", -2004, -3004))
+command_press_release_integer.append(PressReleaseCommand("Turn Right", "NP9", -2005, -3005))
+command_press_release_integer.append(PressReleaseCommand("Flute equip 2", "NP1", -2006, -3006))
+command_press_release_integer.append(PressReleaseCommand("Lute equip 3", "NP3", -2007, -3007))
+command_press_release_integer.append(PressReleaseCommand("Emote", "NP2", -2008, -3008))
+command_press_release_integer.append(PressReleaseCommand("Voice Command", "NP0", -2009, -3009))
+command_press_release_integer.append(PressReleaseCommand("Alpha1", "1", -2010, -3010))
+command_press_release_integer.append(PressReleaseCommand("Alpha2", "2", -2011, -3011))
+command_press_release_integer.append(PressReleaseCommand("Alpha3", "3", -2012, -3012))
+command_press_release_integer.append(PressReleaseCommand("Alpha4", "4", -2013, -3013))
+command_press_release_integer.append(PressReleaseCommand("Alpha5", "5", -2014, -3014))
+command_press_release_integer.append(PressReleaseCommand("Alpha6", "6", -2015, -3015))
+command_press_release_integer.append(PressReleaseCommand("Alpha7", "7", -2016, -3016))
+command_press_release_integer.append(PressReleaseCommand("Alpha8", "8", -2017, -3017))
+command_press_release_integer.append(PressReleaseCommand("Alpha9", "9", -2018, -3018))
+command_press_release_integer.append(PressReleaseCommand("Alpha0", "0", -2019, -3019))
+command_press_release_integer.append(PressReleaseCommand("Jump", "/", -2020, -3020))
+command_press_release_integer.append(PressReleaseCommand("Crouch", "-", -2021, -3021))
+
+
+
+
+
+## Group Voice 1
+command_sequence.append(Command(1002,"Yes",[voice, alpha1]))
+command_sequence.append(Command(1003,"No",[voice, alpha2]))
+command_sequence.append(Command(1004,"Help",[voice, alpha3]))
+command_sequence.append(Command(1005,"Insult",[voice, alpha4]))
+command_sequence.append(Command(1006,"Intimidate",[voice, alpha5]))
+
+
+## Group Voice 2
+command_sequence.append(Command(1007,"Sorry",[voice,voice, alpha1]))
+command_sequence.append(Command(1008,"Laugh",[voice,voice, alpha2]))
+command_sequence.append(Command(1009,"Thanks",[voice,voice, alpha3]))
+command_sequence.append(Command(1010,"Friendlies",[voice,voice, alpha4]))
+command_sequence.append(Command(1011,"Retreat",[voice,voice, alpha5]))
+
+## Group Voice 3
+command_sequence.append(Command(1012,"Hold",[voice,voice,voice, alpha1]))
+command_sequence.append(Command(1013,"Hello",[voice,voice,voice, alpha2]))
+command_sequence.append(Command(1014,"Follow Me",[voice,voice,voice, alpha3]))
+command_sequence.append(Command(1015,"Respect",[voice,voice,voice, alpha4]))
+command_sequence.append(Command(1016,"Charge",[voice,voice,voice, alpha5]))
+
+
+## Group 1
+command_sequence.append(Command(1017,"Come at me",[emote, alpha1]))
+command_sequence.append(Command(1018,"Throat cut",[emote, alpha2]))
+command_sequence.append(Command(1019,"Salute",[emote, alpha3]))
+command_sequence.append(Command(1020,"Facepalm",[emote, alpha4]))
+command_sequence.append(Command(1021,"Squat",[emote, alpha5]))
+command_sequence.append(Command(1022,"Yelling",[emote, alpha6]))
+command_sequence.append(Command(1023,"Cheer",[emote, alpha7]))
+command_sequence.append(Command(1024,"Dance",[emote, alpha8]))
+command_sequence.append(Command(1025,"Disapprove"   ,[emote,alpha9]))
+
+## Group 2
+command_sequence.append(Command(1026,"Shake fist"   ,[emote,emote,alpha1]))
+command_sequence.append(Command(1027,"Shrug"        ,[emote,emote,alpha2]))
+command_sequence.append(Command(1028,"Whatever"     ,[emote,emote,alpha3]))
+command_sequence.append(Command(1029,"Roar"         ,[emote,emote,alpha4]))
+command_sequence.append(Command(1030,"Yield"        ,[emote,emote,alpha5]))
+command_sequence.append(Command(1031,"Cower"        ,[emote,emote,alpha6]))
+command_sequence.append(Command(1032,"Laughing"     ,[emote,emote,alpha7]))
+command_sequence.append(Command(1033,"point back"   ,[emote,emote,alpha8]))
+command_sequence.append(Command(1034,"Its all over",[emote,emote ,alpha9]))
+
+
+## Group 3
+command_sequence.append(Command(1035,"Informal bow",[emote,emote,emote,alpha1]))
+command_sequence.append(Command(1036,"Wave",        [emote,emote,emote,alpha2]))
+command_sequence.append(Command(1037,"Point",       [emote,emote,emote,alpha3]))
+command_sequence.append(Command(1038,"Thumbs Up",   [emote,emote,emote,alpha4]))
+command_sequence.append(Command(1039,"Thumbs Down", [emote,emote,emote,alpha5]))
+command_sequence.append(Command(1040,"Jester",      [emote,emote,emote,alpha6]))
+
+
+
+
 
 
 # Find the window by its title
@@ -233,9 +377,10 @@ time_for_clipboard_to_be_effective=0.01
 time_for_past_to_be_effective=0.01
 time_between_notes=0.1
 
-key_for_shawm= "I"
-key_for_lute= "O"
+key_for_shawm= "NP1"
+key_for_lute= "NP3"
 key_for_mute_switch= "p"
+
 
 
 def past_key_post():
@@ -258,11 +403,17 @@ def pess_and_release_key_post(key):
 
 def pess_key_post(key):   
         global mordhau_hwnd
-        send_key_press(mordhau_hwnd, keyboard_mappings[key])
+        if key in keyboard_mappings:
+            send_key_press(mordhau_hwnd, keyboard_mappings[key])
+        else :
+            print(f"Key {key} not found in mappings")
 
 def release_key_post(key):   
         global mordhau_hwnd
-        send_key_release(mordhau_hwnd, keyboard_mappings[key])
+        if key in keyboard_mappings:
+            send_key_release(mordhau_hwnd, keyboard_mappings[key])
+        else :
+            print(f"Key {key} not found in mappings")
 
 
 def change_to_flute():
@@ -327,7 +478,7 @@ def play_on_notes(int_note_0_60:int):
         time.sleep(0.02)
         try_to_write(str_to_write)
         
-        # ##past_key_post()
+        # ##past_key_post()p
         # time.sleep(0.01)
         # pess_and_release_key_post("Backspace")
         # time.sleep(0.01)
@@ -422,30 +573,8 @@ def listen_udp():
 
             bool_is_int_command=True
 
-        if(bool_is_int_command and int_cmd_value>-3 and int_cmd_value<121):
-            if int_cmd_value<61 and last_int_command>60:
-                
-                change_to_lute()
-                print("Change to lute")
-                
-            elif int_cmd_value>60 and last_int_command<61:
-                
-                change_to_flute()
-                print("Change to flute")
-                
-                
-            if(int_cmd_value>60):
-                note_int_to_play= int_cmd_value-60
-                play_on_notes(note_int_to_play)
-            elif int_cmd_value>0:
-                note_int_to_play= int_cmd_value
-                play_on_notes(note_int_to_play)
-            elif int_cmd_value==-1:
-                change_to_flute()
-            elif int_cmd_value==-2:
-                change_to_lute()
-            
-            last_int_command= int_cmd_value
+        if(bool_is_int_command ):
+            play_note_from_integer(int_cmd_value)
             print(f"Received {int_cmd_value}")
             # Process the received data here
             # Example: print the received data
@@ -522,6 +651,32 @@ keyboard_mappings = {
     'X': 0x58,
     'Y': 0x59,
     'Z': 0x5A,
+    'a': 0x41,
+    'b': 0x42,
+    'c': 0x43,
+    'd': 0x44,
+    'e': 0x45,
+    'f': 0x46,
+    'g': 0x47,
+    'h': 0x48,
+    'i': 0x49,
+    'j': 0x4A,
+    'k': 0x4B,
+    'l': 0x4C,
+    'm': 0x4D,
+    'n': 0x4E,
+    'o': 0x4F,
+    'p': 0x50,
+    'q': 0x51,
+    'r': 0x52,
+    's': 0x53,
+    't': 0x54,
+    'u': 0x55,
+    'v': 0x56,
+    'w': 0x57,
+    'x': 0x58,
+    'y': 0x59,
+    'z': 0x5A,
     "LeftWindows": 0x5B,
     "RightWindows": 0x5C,
     "Applications": 0x5D,
@@ -553,6 +708,12 @@ keyboard_mappings = {
     "Subtract": 0x6D,
     "Decimal": 0x6E,
     "Divide": 0x6F,
+    
+    "*": 0x6A,
+    "+": 0x6B,
+    "-": 0x6D,
+    ".": 0x6E,
+    "/": 0x6F,
     "F1": 0x70,
     "F2": 0x71,
     "F3": 0x72,
@@ -786,6 +947,120 @@ keyboard_mappings = {
 
 
 
+
+command_sequence_interval_second=0.001 
+def execute_sequence_by_int(int_value):
+    global command_sequence
+    for cmd in command_sequence:
+        if cmd.command_id==int_value:
+            print(f"Command:{cmd.command_id} | {cmd.label_id}")
+            for key in cmd.sequence:
+                print (f"Key:{key}")
+                pess_and_release_key_post(key)
+                time.sleep(command_sequence_interval_second)
+            
+            time.sleep(command_sequence_interval_second)
+            return True
+    return False
+        
+
+
+int_last_command_played=0
+def play_note_from_integer( new_int:int):
+
+    global int_last_command_played
+    play_note_from_integer_old_new(int_last_command_played, new_int)
+    int_last_command_played=new_int
+
+
+def try_execute_as_input(new_int:int):
+    for item in command_press_release_integer:
+        if item.press==new_int:
+            pess_key_post(item.key)
+        if item.release==new_int:
+            release_key_post(item.key)
+
+def play_note_from_integer_old_new(last_int:int, new_int:int):
+            if (new_int>0 and new_int<61) and not (last_int>0 and last_int<61):
+                
+                change_to_lute()
+                print("Change to lute")
+                
+            elif (new_int>60 and new_int<121) and not (last_int>60 and last_int<121):
+                
+                change_to_flute()
+                print("Change to flute")
+                
+                
+            elif(new_int>60 and new_int<121):
+                note_int_to_play= new_int-60
+                play_on_notes(note_int_to_play)
+            elif new_int>0 and new_int<61:
+                note_int_to_play= new_int
+                play_on_notes(note_int_to_play)
+            elif new_int==-1:
+                change_to_flute()
+            elif new_int==-2:
+                change_to_lute()
+            elif execute_sequence_by_int(new_int):
+                a=0
+            elif try_execute_as_input(new_int):
+                a=0
+            else:
+                print("Invalid command")
+                return
+
+            
+
+
+def commands_tdd():
+    
+    time_between_tdd_commands=1
+    for i in range(1002,1041):
+        print (f"Command Sent:{i}")
+        play_note_from_integer(i)
+        print (f"End")
+        time.sleep(time_between_tdd_commands)
+
+
+def commands_note():
+    time_between_tdd_commands=0.1
+    play_note_from_integer (-2)
+    time.sleep(2)
+    play_note_from_integer(-1)
+    time.sleep(2)
+    for i in range(0,61):
+        print (f"Command Sent:{i}")
+        play_note_from_integer(i)
+        print (f"End")
+        time.sleep(time_between_tdd_commands)
+
+    for i in range(61,121):
+        print (f"Command Sent:{i}")
+        play_note_from_integer(i)
+        print (f"End")
+        time.sleep(time_between_tdd_commands)
+
+def test_input_possible():
+    for item in command_press_release_integer:
+        print (f"Test Input:{item.label_id} {item.key} {item.press} {item.release}")
+        print(f"press {item.press}")
+        play_note_from_integer(item.press)
+        time.sleep(1)
+        print(f"release {item.release}")
+        play_note_from_integer(item.release)
+        time.sleep(1)
+        print (f"End")
+    
+
+
+    # self.label_id = label_id
+    #     self.key = key
+    #     self.press = press
+    #     self.release = release
+##commands_tdd()
+##commands_note()
+## test_input_possible()
 listen_udp()
 
 
